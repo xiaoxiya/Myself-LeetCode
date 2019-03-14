@@ -1,0 +1,30 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+     
+        if(s==null || "".equals(s)){
+            return 0;
+        }
+        //上一个最长子字符串的起始位置
+        int last_start = 0;
+        int maxIndex=0;
+        int maxLen = 1;
+        int dp = 1;
+        for(int i = 1;i<s.length();++i){
+            for(int j = i-1;j>=last_start;--j){
+                if(s.charAt(i) == s.charAt(j)){
+                    dp = i-j;
+                    last_start = j+1; // 更新last_start  
+                    break;
+                }else if(j == last_start) {//无重复
+                   dp++;
+                }
+            }
+            if(dp>maxLen){
+                maxLen=dp;
+                maxIndex = i + 1 - maxLen;  
+            }
+        }
+        return maxLen;
+    }
+           
+}
