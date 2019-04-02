@@ -1,0 +1,27 @@
+class Solution {
+    public String intToRoman(int num) {
+     
+        String singleDigit[] = {"I","II","III","IV","V","VI","VII","VIII","IX"};
+        String ten[] = {"X","XX","XXX","XL","L","LX","LXX","LXXX","XC"};
+        String hundred[] = {"C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
+        String thousand[] = {"M","MM","MMM"};
+        
+        StringBuffer result = new StringBuffer();
+        
+       
+        if(num>=1000){
+            result.append(thousand[num/1000-1]);
+        }
+        if(num>=100 && num%1000/100!=0){
+            result.append(hundred[num%1000/100-1]);
+        }
+        if(num>=10  && num%100/10!=0){
+            result.append(ten[num%100/10-1]);
+        }
+        if(num>0 && num%10!=0){
+            result.append(singleDigit[num%10-1]);
+        }
+        
+        return result.toString();
+    }
+}
