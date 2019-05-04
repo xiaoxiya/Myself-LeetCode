@@ -1,0 +1,30 @@
+class Solution {
+    public int romanToInt(String s) {
+       Map<String,Integer> roman = new HashMap();
+       roman.put("I",1);
+       roman.put("V",5);
+       roman.put("X",10);
+       roman.put("L",50);
+       roman.put("C",100);
+       roman.put("D",500);
+       roman.put("M",1000);
+        int romanInt = 0;
+        for(int i = 0 ; i<s.length() ; i++){
+            int temp = 0;
+            int romantemp = 0;
+          if(i>=1){
+            romantemp = roman.get(String.valueOf(s.charAt(i-1)));
+          }
+           if(roman.containsKey(String.valueOf(s.charAt(i)))){
+               temp = roman.get(String.valueOf(s.charAt(i)));
+              
+               temp = temp > romantemp ? temp -2*romantemp :temp;
+                
+           }
+          
+            romanInt = temp + romanInt;
+        
+        }
+        return romanInt;
+    }
+}
