@@ -1,0 +1,107 @@
+public class Page<T> implements Serializable {
+    private static final long serialVersionUID = -5395997221963176643L;
+    /**
+     * 当前页面的数据
+     */
+    private List<T> list;
+    /**
+     * 当前页码
+     */
+    private int pageNo;
+    /**
+     * 页面大小
+     */
+    private int pageSize;
+    /**
+     * 总页数
+     */
+    private int totalPage;
+    /**
+     *总记录数
+     */
+    private int total;
+    /**
+     * 下一页
+     */
+    private int nextPage;
+    /**
+     * 上一页
+     */
+    private int prePage;
+
+    public Page(List<T> list, int pageNo, int pageSize, int totalPage, int total) {
+        this.list = list;
+        this.pageNo = pageNo;
+        this.pageSize = pageSize;
+        this.totalPage = totalPage;
+        this.total = total;
+    }
+
+    public Page() {
+    }
+
+    public List<T> getList() {
+        return this.list;
+    }
+
+    public int getPageNo() {
+        return this.pageNo;
+    }
+
+    public int getPageSize() {
+        return this.pageSize;
+    }
+
+    public int getTotalPage() {
+        if (total % pageSize == 0){
+            return total / pageSize;
+        }
+        return  total / pageSize + 1;
+    }
+    /**
+     * 下一页页码
+     */
+    public int getNextPage() {
+        if (pageNo < getTotalPage()) {
+            nextPage = pageNo + 1;
+        } else {
+            nextPage = pageNo;
+        }
+        return nextPage;
+    }
+    /**
+     * 上一页页码
+     */
+    public int getPrePage() {
+        if (pageNo > 1) {
+            prePage = pageNo - 1;
+        } else {
+            prePage = pageNo;
+        }
+        return prePage;
+    }
+
+    public int getTotal() {
+        return this.total;
+    }
+
+    public void setPageNo(int pageNo) {
+        this.pageNo = pageNo;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public void setList(List<T> list) {
+        this.list = list;
+    }
+}
