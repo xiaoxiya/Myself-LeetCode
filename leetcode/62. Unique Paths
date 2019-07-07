@@ -1,0 +1,13 @@
+//题目描述：统计从矩阵左上角到右下角的路径总数，每次只能向右或者向下移动
+class Solution {
+    public int uniquePaths(int m, int n) {
+        //向下移动 n-1 次，向右移动 m-1 次，总共移动m+n-2次
+        long result = 1; 
+        int move = m+n-2;
+        int down = n-1;
+        for (int i = 1; i <= down; i++){
+           result = result *(move - down +i) /i;
+        }
+        return (int)result;
+    }
+}
