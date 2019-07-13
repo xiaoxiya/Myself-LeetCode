@@ -15,9 +15,10 @@ If you have figured out the O(n) solution, try coding another solution using the
 public int maxSubArray(int[] nums) {
         //最后返回的结果
         int max = nums[0];
-        //数组和当前的最大值
+        //子数组和当前的和
         int currentMax = nums[0];
         for(int i = 1; i < nums.length; i++){
+            //如果前面的和加当前数组值小于当前数组值，则从当前数组值开始从新计算最大值
             currentMax = Math.max(nums[i],currentMax+nums[i]);
             if(max < currentMax){
                 max = currentMax;   
