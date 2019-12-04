@@ -1,4 +1,4 @@
-# hello-github
+# 菜鸡力扣代码收集
 - 收集自己在leetcode的题解
 
 
